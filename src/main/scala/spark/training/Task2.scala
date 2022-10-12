@@ -12,22 +12,27 @@ import math._
 object Task2 {
   def main(args: Array[String]): Unit = {
 
+    Logger.getLogger("org").setLevel(Level.ERROR)
+
     val spark = SparkSession
       .builder()
       .appName("SecondTask")
       .master("local[*]")
       .getOrCreate()
+    spark.sparkContext.setLogLevel("ERROR")
+    println("============================")
+    println("============================")
 
-    val jdbcDF1 = spark
+    val jdbcDF = spark
       .read
       .format("jdbc")
-      .option("url", "jdbc:postgresql:localhost/postgres")
+      .option("url", "jdbc:postgresql://localhost:5432/postgres")
       .option("dbtable", "public.realestate")
       .option("user", "postgres")
-      .option("password", "Moha@010015")
+      .option("password", "postgres")
       .load()
 
-    jdbcDF1.show()
+    jdbcDF.show(jdbcDF.count().toInt)
 
   }
 }
