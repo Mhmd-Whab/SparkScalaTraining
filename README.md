@@ -29,4 +29,15 @@ this dataset is included in the course of apache-spark-with-scala-hands-on-with-
 it includes some information about houses, such as house age, location, price.
 
 ## Example of the applied analysis on the sf_fire_calls dataset:
+What months within the year 2018 saw the highest number of fire calls
+1. Querying the data using the DataFrame API
+
 ![Query the data using the DataFrame API](./images/DFQuery.png)
+
+2. Querying the data using the spark sqk interface
+
+![Querying the data using the spark sqk interface](.images/DFSQL.png)
+
+The output:
+
+![The output](.images/output.png)
