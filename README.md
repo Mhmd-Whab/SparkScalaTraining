@@ -36,8 +36,8 @@ What months within the year 2018 saw the highest number of fire calls
 
 2. Querying the data using the spark sqk interface
 
-![Querying the data using the spark sqk interface](.images/DFSQL.png)
+![Querying the data using the spark sqk interface](./images/DFSQL.png)
 
 The output:
 
-![The output](.images/output.png)
+![The output](./images/output.png)
