@@ -28,5 +28,5 @@ https://github.com/databricks/LearningSparkV2/tree/master/databricks-datasets/le
 this dataset is included in the course of apache-spark-with-scala-hands-on-with-big-data.
 it includes some information about houses, such as house age, location, price.
 
-## Examples of the applied analysis on the sf_fire_calls dataset:
-#### 1.
+## Example of the applied analysis on the sf_fire_calls dataset:
+#### [Query the data using the DataFrame API][./images/DFQuery.png]
