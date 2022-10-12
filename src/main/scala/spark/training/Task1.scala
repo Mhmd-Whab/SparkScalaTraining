@@ -296,7 +296,7 @@ object Task1 {
     val dataframe = spark.read
       .option("inferschema", true)
       .option("header", true)
-      .csv("C:\\Users\\maabd\\IdeaProjects\\Demo\\data\\sf-fire-calls.csv")
+      .csv("data/sf-fire-calls.csv")
       .withColumn("CallDate", to_date(col("CallDate"), "MM/dd/yyyy" ) )
       .where(year(col("CallDate")) === 2018)
     dataframe.cache()
@@ -345,7 +345,7 @@ object Task1 {
     val dataset = spark.read
       .option("header", true)
       .schema(fire_schema)
-      .csv("C:\\Users\\maabd\\IdeaProjects\\Demo\\data\\sf-fire-calls.csv")
+      .csv("data/sf-fire-calls.csv")
       .withColumn("CallDate", to_date(col("CallDate"), "MM/dd/yyyy"))
       .where(year(col("CallDate")) === 2018)
       .as[sf_fire]
