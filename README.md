@@ -29,4 +29,4 @@ this dataset is included in the course of apache-spark-with-scala-hands-on-with-
 it includes some information about houses, such as house age, location, price.
 
 ## Example of the applied analysis on the sf_fire_calls dataset:
-#### ![Query the data using the DataFrame API][./images/DFQuery.png]
+![Query the data using the DataFrame API](./images/DFQuery.png)
