@@ -19,11 +19,14 @@ This project run on intellij IDEA 2022.2.2 on my local computer with the followi
 * SSD: INTEL SSDPEKNU512GZH
 
 ## Datasets
-### 1. sf_fire_calls: 
+#### 1. sf_fire_calls: 
 this dataset is mentioned in the LearningSpark2.0 textbool in chapter 3
 Fire Calls-For-Service includes all fire units responses to calls. Each record includes the call number, incident number, address, unit identifier, call type, and disposition. All relevant time intervals are also included. Because this dataset is based on responses, and since most calls involved multiple units, there are multiple records for each call number. Addresses are associated with a block number, intersection or call box, not a specific address.
 https://github.com/databricks/LearningSparkV2/tree/master/databricks-datasets/learning-spark-v2/sf-fire
 
-### 2. realestate: 
+#### 2. realestate: 
 this dataset is included in the course of apache-spark-with-scala-hands-on-with-big-data.
 it includes some information about houses, such as house age, location, price.
+
+## Examples of the applied analysis on the sf_fire_calls dataset:
+#### 1.
