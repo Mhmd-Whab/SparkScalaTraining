@@ -23,7 +23,7 @@ object Task2 {
     println("============================")
     println("============================")
 
-    val jdbcDF = spark
+    val jdbcDF1 = spark
       .read
       .format("jdbc")
       .option("url", "jdbc:postgresql://localhost:5432/postgres")
@@ -32,7 +32,24 @@ object Task2 {
       .option("password", "postgres")
       .load()
 
-    jdbcDF.show(jdbcDF.count().toInt)
+    val jdbcDF2 = spark
+      .read
+      .format("jdbc")
+      .option("url", "jdbc:postgresql://localhost:5432/postgres")
+      .option("dbtable", "public.mock_data")
+      .option("user", "postgres")
+      .option("password", "postgres")
+      .load()
 
+    jdbcDF1.printSchema()
+    jdbcDF1.show(5)
+    println("=======================")
+    jdbcDF2.printSchema()
+    jdbcDF2.show(5)
+
+    println("DF2 group by country")
+
+    val q = jdbcDF2.orderBy(asc("country"), asc("first_name"), asc("last_name"))
+    q.show(q.count().toInt)
   }
 }
