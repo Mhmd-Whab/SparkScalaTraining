@@ -9,14 +9,14 @@ import org.apache.spark.sql.functions.{pow, _}
 import scala.io.{Codec, Source}
 import math._
 
-object Task2 {
+object ReadPostgreSQL {
   def main(args: Array[String]): Unit = {
 
     Logger.getLogger("org").setLevel(Level.ERROR)
 
     val spark = SparkSession
       .builder()
-      .appName("SecondTask")
+      .appName("ReadPostgreSQL")
       .master("local[*]")
       .getOrCreate()
     spark.sparkContext.setLogLevel("ERROR")
@@ -49,7 +49,18 @@ object Task2 {
 
     println("DF2 group by country")
 
-    val q = jdbcDF2.orderBy(asc("country"), asc("first_name"), asc("last_name"))
+    val q = jdbcDF2.groupBy("country").count().orderBy(desc("count"))
     q.show(q.count().toInt)
+
+    /*
+    q
+      .write
+      .format("jdbc")
+      .option("url", "jdbc:postgresql://localhost:5432/postgres")
+      .option("dbtable", "public.numofcitizens")
+      .option("user", "postgres")
+      .option("password", "postgres")
+      .save()
+    */
   }
 }

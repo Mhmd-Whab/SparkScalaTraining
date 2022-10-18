@@ -11,6 +11,10 @@ libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.3.0"
 // https://mvnrepository.com/artifact/org.postgresql/postgresql
 libraryDependencies += "org.postgresql" % "postgresql" % "42.5.0"
 
+// https://mvnrepository.com/artifact/org.mongodb.spark/mongo-spark-connector
+libraryDependencies += "org.mongodb.spark" % "mongo-spark-connector" % "10.0.4"
+
+
 
 lazy val root = (project in file("."))
   .settings(

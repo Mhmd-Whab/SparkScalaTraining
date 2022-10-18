@@ -9,7 +9,8 @@ import scala.io.{Codec, Source}
 import math._
 
 /* Use dataframes, sql to analyze data sets */
-object Task1 {
+
+object SparkAnalysis {
   case class sf_fire(CallNumber: Int, UnitID: String, IncidentNumber: Int, CallType: String, CallDate: String
                      , WatchDate: String, CallFinalDisposition: String, AvailableDtTm: String
                      , Address: String, City: String, Zipcode: Int, Battalion: String
