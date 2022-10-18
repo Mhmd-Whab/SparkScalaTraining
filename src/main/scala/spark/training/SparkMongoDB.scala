@@ -7,7 +7,7 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.functions.{pow, _}
 import com.mongodb.spark._
 
-object ReadMongoDB {
+object SparkMongoDB {
 
   def main(args: Array[String]): Unit = {
 

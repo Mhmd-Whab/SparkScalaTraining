@@ -9,7 +9,7 @@ import org.apache.spark.sql.functions.{pow, _}
 import scala.io.{Codec, Source}
 import math._
 
-object ReadPostgreSQL {
+object SparkPostgreSQL {
   def main(args: Array[String]): Unit = {
 
     Logger.getLogger("org").setLevel(Level.ERROR)
@@ -52,15 +52,14 @@ object ReadPostgreSQL {
     val q = jdbcDF2.groupBy("country").count().orderBy(desc("count"))
     q.show(q.count().toInt)
 
-    /*
     q
       .write
       .format("jdbc")
+      .mode("Overwrite")
       .option("url", "jdbc:postgresql://localhost:5432/postgres")
       .option("dbtable", "public.numofcitizens")
       .option("user", "postgres")
       .option("password", "postgres")
       .save()
-    */
   }
 }
