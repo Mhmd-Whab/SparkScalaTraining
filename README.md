@@ -8,8 +8,9 @@ In this project, I used these versions of tools:
 2. Apache Spark SQL 3.3.0
 3. Scala version 2.12.15
 4. postgresql 42.5.0
-5. sbt version 1.7.2
-6. Oracle Corporation Java 1.8.0_341
+5. mongodb 10.0.4
+6. sbt version 1.7.2
+7. Oracle Corporation Java 1.8.0_341
 
 ## Setup and pc specifications
 This project run on intellij IDEA 2022.2.2 on my local computer with the following specifications:
@@ -27,6 +28,12 @@ https://github.com/databricks/LearningSparkV2/tree/master/databricks-datasets/le
 #### 2. realestate: 
 this dataset is included in the course of apache-spark-with-scala-hands-on-with-big-data.
 it includes some information about houses, such as house age, location, price.
+
+#### 3. iot_devices
+https://github.com/databricks/LearningSparkV2/tree/master/databricks-datasets/learning-spark-v2
+This dataset contains sensors records for weather and air components and other measurements, for example: Co2, tempreature, humidity.
+And also some details about the sensores, such as: battery_level
+note: this data is fake
 
 ## Example of the applied analysis on the sf_fire_calls dataset:
 What months within the year 2018 saw the highest number of fire calls
