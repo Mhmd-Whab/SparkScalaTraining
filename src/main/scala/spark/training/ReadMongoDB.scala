@@ -15,6 +15,7 @@ object ReadMongoDB {
       .builder()
       .appName("ReadMongoDB")
       .config("spark.mongodb.read.connection.uri", "mongodb://spark:spark@localhost:27017") // mongodb://user:pass@url:port
+      .config("spark.mongodb.write.connection.uri", "mongodb://spark:spark@localhost:27017")
       .master("local[*]")
       .getOrCreate()
 
@@ -26,10 +27,32 @@ object ReadMongoDB {
     val df = spark.read
       .format("mongodb")
       .option("database", "mongospark")
-      .option("collection", "sample")
+      .option("collection", "iot")
       .load()
 
     df.printSchema()
-    df.show()
+    df.show(5)
+
+    println("=========================")
+    println("countries with temprature more than 25")
+    println("=========================")
+
+    val q = df
+      .select("cn", "temp", "battery_level")
+      .where(col("temp") > 25)
+      .groupBy("cn")
+      .agg(avg("temp").as("avg_temp")
+        , avg("battery_level").as("avg_battery_level"))
+      .orderBy(desc("avg_temp"))
+
+    q.show()
+
+    q
+      .write
+      .format("mongodb")
+      .mode("Overwrite")
+      .option("database", "mongospark")
+      .option("collection", "hightemp_countries")
+      .save()
   }
 }
