@@ -8,8 +8,9 @@ In this project, I used these versions of tools:
 2. Apache Spark SQL 3.3.0
 3. Scala version 2.12.15
 4. postgresql 42.5.0
-5. sbt version 1.7.2
-6. Oracle Corporation Java 1.8.0_341
+5. mongodb 10.0.4
+6. sbt version 1.7.2
+7. Oracle Corporation Java 1.8.0_341
 
 ## Setup and pc specifications
 This project run on intellij IDEA 2022.2.2 on my local computer with the following specifications:
