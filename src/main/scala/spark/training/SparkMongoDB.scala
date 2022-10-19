@@ -22,8 +22,8 @@ object SparkMongoDB {
     spark.sparkContext.setLogLevel("ERROR")
     println("============================")
     println("============================")
-
     import spark.implicits._
+
     val df = spark.read
       .format("mongodb")
       .option("database", "mongospark")
@@ -34,7 +34,7 @@ object SparkMongoDB {
     df.show(5)
 
     println("=========================")
-    println("countries with temprature more than 25")
+    println("countries with temperature more than 25")
     println("=========================")
 
     val q = df
@@ -44,6 +44,7 @@ object SparkMongoDB {
       .agg(avg("temp").as("avg_temp")
         , avg("battery_level").as("avg_battery_level"))
       .orderBy(desc("avg_temp"))
+      .withColumnRenamed("cn", "country")
 
     q.show()
 
