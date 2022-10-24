@@ -15,6 +15,10 @@ object SparkMongoDB {
       .builder()
       .appName("ReadMongoDB")
       .config("spark.mongodb.read.connection.uri", "mongodb://spark:spark@localhost:27017") // mongodb://user:pass@url:port
+      .config("spark.mongodb.read.partitioner", "com.mongodb.spark.sql.connector.read.partitioner.PaginateBySizePartitioner")
+      .config("spark.mongodb.read.partitioner.options.partition.field", "_id")
+      .config("spark.mongodb.read.partitioner.options.partition.size", "4")
+//      .config("spark.mongodb.read.partitioner.options.samples.per.partition", "13500")
       .config("spark.mongodb.write.connection.uri", "mongodb://spark:spark@localhost:27017")
       .master("local[*]")
       .getOrCreate()
@@ -37,6 +41,15 @@ object SparkMongoDB {
     println("countries with temperature more than 25")
     println("=========================")
 
+    println(df.rdd.getNumPartitions)
+
+    val partitions = df
+      .withColumn("partition_id", spark_partition_id())
+      .groupBy("partition_id")
+      .count()
+      .orderBy(asc("partition_id"))
+    partitions.show(partitions.count().toInt)
+
     val q = df
       .select("cn", "temp", "battery_level")
       .where(col("temp") > 25)
@@ -47,7 +60,7 @@ object SparkMongoDB {
       .withColumnRenamed("cn", "country")
 
     q.show()
-
+    /*
     q
       .write
       .format("mongodb")
@@ -55,5 +68,11 @@ object SparkMongoDB {
       .option("database", "mongospark")
       .option("collection", "hightemp_countries")
       .save()
+    */
+
+    println("## Jobs have finished -- Waiting for termination ##")
+    val l = 1200 * math.pow(10, 3)
+    Thread.sleep(l.toLong)
+    spark.close()
   }
 }

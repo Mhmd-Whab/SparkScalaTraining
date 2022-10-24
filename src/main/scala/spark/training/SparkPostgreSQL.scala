@@ -36,9 +36,9 @@ object SparkPostgreSQL {
       .read
       .format("jdbc")
       .option("url", "jdbc:postgresql://localhost:5432/postgres")
-      .option("dbtable", "public.mock_data")
+      .option("dbtable", "public.numofcitizens")
       .option("user", "postgres")
-      .option("password", "postgres")
+      .option("password", "spark")
       .load()
 
     jdbcDF1.printSchema()
